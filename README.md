@@ -8,8 +8,7 @@ A Terraform module for creating a new lambda resource on an existing API gateway
 The API gateway requires:
 * An existing API gateway
 * A lambda function packaged as zip
-* list of subnets
-* A resource path
+* existing VPC 
  
 The API gateway resource consists of:
 - resource
