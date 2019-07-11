@@ -70,6 +70,7 @@ module "api_gateway_lambda_resource" {
 | lambda_egress_cidr_blocks| egress CIDR for lambda |- | yes |
 | lambda_function_name| lambda function name |- | yes |
 | lambda_handler| handler path for lambda |- | yes |
+| lambda_environment_variables| environment variables for lambda|- | yes |
 | resource_http_method| HTTP method for the API gateway resource|- | yes |
 
 
@@ -79,6 +80,7 @@ module "api_gateway_lambda_resource" {
 |-----------------------------------------|-----------------------------------------------------------|
 | stage_execution_arn                                    | The execution ARN of the API gateway stage                               |
 | stage_invoke_url                                     |  The invocation URL for the API gateway stage|
+| stage_name                                     |  The name of the stage for API gateway|
 
 
 Development
