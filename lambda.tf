@@ -2,7 +2,7 @@ data "aws_caller_identity" "current" {
 }
 
 resource "aws_iam_role" "proxy_lambda_execution_role" {
-  name               = "proxy_lambda_execution_role"
+  description               = "proxy_lambda_execution_role"
   assume_role_policy = <<EOF
 {
   "Version": "2012-10-17",
@@ -21,7 +21,7 @@ EOF
 }
 
 resource "aws_iam_role_policy" "proxy_lambda_execution_policy" {
-  name = "proxy_lambda_execution_policy"
+  description = "proxy_lambda_execution_policy"
   role = aws_iam_role.proxy_lambda_execution_role.id
   policy = <<EOF
 {
@@ -63,7 +63,6 @@ EOF
 }
 
 resource "aws_security_group" "sg_lambda" {
-name        = "proxy-lambda-${var.deployment_identifier}"
 description = "proxy-lambda-${var.deployment_identifier}"
 vpc_id      = var.vpc_id
 
