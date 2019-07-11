@@ -21,7 +21,6 @@ EOF
 }
 
 resource "aws_iam_role_policy" "proxy_lambda_execution_policy" {
-  description = "proxy_lambda_execution_policy"
   role = aws_iam_role.proxy_lambda_execution_role.id
   policy = <<EOF
 {
