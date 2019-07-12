@@ -53,7 +53,7 @@ namespace :deployment do
     RakeTerraform.define_command_tasks do |t|
       t.argument_names = [:deployment_identifier]
 
-      t.configuration_name = 'network load balancer module'
+      t.configuration_name = 'lambda module'
       t.source_directory = configuration.for(:harness).source_directory
       t.work_directory = configuration.for(:harness).work_directory
 
