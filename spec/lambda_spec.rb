@@ -30,9 +30,9 @@ describe 'Lambda' do
   end
 
   context 'IAM policy' do
-    let(:lambda_policy) {output_for(:harness, 'iam_role_policy_name')}
-    subject {iam_policy(lambda_policy)}
-    it {should exist}
+    # let(:lambda_policy) {output_for(:harness, 'iam_role_policy_name')}
+    # subject {iam_policy(lambda_policy)}
+    # it {should exist}
   end
 
 end
