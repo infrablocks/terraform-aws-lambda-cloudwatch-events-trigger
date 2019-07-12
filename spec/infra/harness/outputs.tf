@@ -1,7 +1,10 @@
-output "stage_exection_arn" {
-  value = "${module.api_gateway_lambda_resource.stage_execution_arn}"
+output "security_group_name" {
+  value = "${module.lambda.security_group_name}"
 }
 
-output "stage_invoke_url" {
-  value = "${module.api_gateway_lambda_resource.stage_invoke_url}"
+output "iam_role_name" {
+  value = "${module.lambda.iam_role_name}"
+}
+output "iam_role_policy_name" {
+  value = "${module.lambda.iam_role_policy_name}"
 }

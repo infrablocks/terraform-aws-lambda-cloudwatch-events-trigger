@@ -1,20 +1,7 @@
 require 'spec_helper'
 require 'aws-sdk'
 
-describe 'API Gateway lambda resource' do
-
-  let(:rest_api_id) {output_for(:prerequisites, 'api_gateway_id')}
-
-  context 'API gateway resource' do
-
-    let(:path_part) {vars.resource_path_part}
-
-    subject {api_gateway_resources(rest_api_id, path_part).first}
-
-    its(:path_part) {should eq path_part}
-
-  end
-
+describe 'Lambda' do
 
   context 'Lambda' do
 
@@ -35,15 +22,17 @@ describe 'API Gateway lambda resource' do
 
   end
 
-  context 'api gateway stage' do
+  context 'security group' do
+    let(:security_group_name) {output_for(:harness, 'security_group_name')}
 
-    let(:stage_name) {vars.api_gateway_stage_name}
-
-    subject {api_gateway_stages(rest_api_id).item.first}
-
-    its(:stage_name) {should eq stage_name}
-
+    subject {security_group(security_group_name)}
+    it {should exist}
   end
 
+  context 'IAM policy' do
+    let(:lambda_policy) {output_for(:harness, 'iam_role_policy_name')}
+    subject {iam_policy(lambda_policy)}
+    it {should exist}
+  end
 
 end

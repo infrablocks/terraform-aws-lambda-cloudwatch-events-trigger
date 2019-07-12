@@ -18,13 +18,6 @@ variable "lambda_subnet_ids" {
   type = "list"
 }
 
-variable "api_gateway_id" {}
-
-variable "api_gateway_stage_name" {}
-
-variable "api_gateway_root_resource_id" {}
-
-variable "resource_path_part" {}
 
 variable "lambda_zip_path" {}
 
@@ -39,11 +32,6 @@ variable "lambda_egress_cidr_blocks" {
 variable "lambda_environment_variables" {
   description = "Environment variables to be provied to the lambda function."
   type = "map"
-}
-
-variable "resource_http_method" {
-  description = "HTTP method on the API gatway to integrate with lambda function"
-  default = "GET"
 }
 
 variable "lambda_function_name" {}

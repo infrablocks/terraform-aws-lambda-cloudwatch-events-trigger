@@ -4,7 +4,6 @@ variable "deployment_identifier" {}
 
 
 variable "account_id" {}
-variable "resource_path_part" {}
 
 variable "lambda_zip_path" {}
 variable "lambda_ingress_cidr_blocks" {
@@ -19,4 +18,3 @@ variable "lambda_environment_variables" {
 variable "lambda_function_name" {}
 variable "lambda_handler" {}
 
-variable "api_gateway_stage_name" {}
