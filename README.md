@@ -1,7 +1,7 @@
 Terraform AWS Lambda CloudWatch events trigger
 ===================================
 
-[![CircleCI](https://circleci.com/gh/infrablocks/terraform-aws-lambda.svg?style=svg)](https://circleci.com/gh/infrablocks/terraform-aws-lambda)
+[![CircleCI](https://circleci.com/gh/infrablocks/terraform-aws-lambda-cloudwatch-events-trigger.svg?style=svg)](https://circleci.com/gh/infrablocks/terraform-aws-lambda-cloudwatch-events-trigger)
 
 A Terraform module for triggering lambdas on schedule
 
