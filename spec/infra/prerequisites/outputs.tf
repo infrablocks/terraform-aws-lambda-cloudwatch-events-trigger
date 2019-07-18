@@ -1,15 +1,8 @@
-output "vpc_id" {
-  value = "${module.base_network.vpc_id}"
+output "lambda_arn" {
+  value = "${module.lambda.lambda_arn}"
 }
 
-output "vpc_cidr" {
-  value = "${module.base_network.vpc_cidr}"
+output "lambda_function_name" {
+  value = "${module.lambda.lambda_function_name}"
 }
 
-output "public_subnet_ids" {
-  value = "${module.base_network.public_subnet_ids}"
-}
-
-output "private_subnet_ids" {
-  value = "${module.base_network.private_subnet_ids}"
-}

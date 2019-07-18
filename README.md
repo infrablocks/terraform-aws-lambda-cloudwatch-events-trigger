@@ -1,19 +1,16 @@
-Terraform AWS Lambda
+Terraform AWS Lambda CloudWatch events trigger
 ===================================
 
 [![CircleCI](https://circleci.com/gh/infrablocks/terraform-aws-lambda.svg?style=svg)](https://circleci.com/gh/infrablocks/terraform-aws-lambda)
 
-A Terraform module for creating a new lambda
+A Terraform module for triggering lambdas on schedule
 
 The lambda module requires:
-* A lambda function packaged as zip
-* existing VPC 
+* A lambda function
  
 The lambda resource consists of:
-- lambda function
-- security group for lambda
-- iam role for executing lambda
-- iam policy for lambda
+- cloudwatch event rule
+- permissions to execute lambda with cloudwatch event
 
 
 Usage
@@ -23,23 +20,26 @@ To use the module, include something like the following in your terraform
 configuration:
 
 ```hcl-terraform
-module "lambda" {
-  source  = "infrablocks/lambda/aws"
+module "lambda-cloudwatch-trigger" {
+  source  = "infrablocks/lambda-cloudwatch-events-trigger/aws"
   region                = "eu-west-2"
   component             = "my-lambda"
   deployment_identifier = "production"
+  
+  lambda_arn =  "arn:eu-west-1:example-lambda"
+  lambda_function_name = "my-lambda"
+  lambda_schedule_expression = "rate(2 days)"
+}
 
-  account_id = "11122233355"
-  vpc_id = "VPC-1234"
-  lambda_subnet_ids = "subnet-id-1"
-  lambda_zip_path = "lambda.zip"
-  lambda_ingress_cidr_blocks = "10.10.0.0/16"
-  lambda_egress_cidr_blocks = "0.0.0.0/8"
-  lambda_environment_variables = '{"TEST_ENV_VARIABLE"="test-value"}'
-  lambda_function_name = "lambda-function"
-  lambda_handler = "handler.hello"
-
-
+module "lambda-cloudwatch-trigger" {
+  source  = "infrablocks/lambda-cloudwatch-events-trigger/aws"
+  region                = "eu-west-2"
+  component             = "my-lambda2"
+  deployment_identifier = "production"
+  
+  lambda_arn =  "arn:eu-west-1:example-lambda"
+  lambda_function_name = "my-lambda2"
+  lambda_schedule_expression = "cron(0 20 * * ? *)"
 }
 ```
 
@@ -51,33 +51,15 @@ module "lambda" {
 | region                           | AWS Region                         | -                   | yes                                  |
 | component| The component for which the load balancer is being created    |- | yes|
 | deployment_identifier|An identifier for this instantiation                                           |- | yes |
-| account_id|AWS account ID                                           |- | yes |
-| vpc_id|VPC to deploy lambda to                                           |- | yes |
-| lambda_subnet_ids| subnet ids for the lambda |- | yes |
-| lambda_zip_path| location of your lambda zip archive |- | yes |
-| lambda_ingress_cidr_blocks| ingress CIDR for lambda |- | yes |
-| lambda_egress_cidr_blocks| egress CIDR for lambda |- | yes |
-| lambda_function_name| lambda function name |- | yes |
-| lambda_handler| handler path for lambda |- | yes |
-| lambda_environment_variables| environment variables for lambda|- | yes |
+| lambda_arn|Lambda ARN                                           |- | yes |
+| lambda_function_name|Name of the Lambda function                                           |- | yes |
+| lambda_schedule_expression|Lambda schedule expression. Defaults to every 5 minutes                                           |rate(5 minutes)| yes |
 
 
 ### Outputs
 
 | Name                                    | Description                                               |
 |-----------------------------------------|-----------------------------------------------------------|
-| lambda_invoke_arn                                     |  The ARN to be used for invoking Lambda Function from API Gateway - to be used in aws_api_gateway_integration's uri
-| lambda_arn                                     |   The Amazon Resource Name (ARN) identifying your Lambda Function.|
-| lambda_function_name                                     |  function name of the lambda|
-| lambda_function_name                                     |  function name of the lambda|
-| lambda_handler                                     | The handler of the lambda|
-| lambda_last_modified                                     |  The date this resource was last modified|
-| lambda_id                                     |  The id of the lambda|
-| lambda_memory_size                                     |  The allocated memroy size of the lambda|
-| lambda_runtime                                     |  The runtime environment of the lambda|
-| lambda_source_code_hash                                     | Base64-encoded representation of raw SHA-256 sum of the zip file, provided either via filename or s3_* parameters.|
-| lambda_source_code_size                                     |  The size in bytes of the function .zip file.|
-| lambda_version                                     | Latest published version of your Lambda Function |
 
 
 Development
