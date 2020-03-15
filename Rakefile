@@ -20,13 +20,15 @@ end
 
 RakeTerraform.define_installation_tasks(
     path: File.join(Dir.pwd, 'vendor', 'terraform'),
-    version: '0.12.2')
+    version: '0.12.17')
 
 task :default => 'test:integration'
 
 namespace :test do
   RSpec::Core::RakeTask.new(:integration => ['terraform:ensure']) do
     ENV['AWS_REGION'] = 'eu-west-2'
+    ENV['TF_PLUGIN_CACHE_DIR'] =
+        "#{Paths.project_root_directory}/vendor/terraform/plugins"
   end
 end
 

@@ -8,14 +8,13 @@ data "terraform_remote_state" "prerequisites" {
 
 
 module "lambda_trigger" {
-  source                = "../../../../"
-  region                = "${var.region}"
-  component             = "${var.component}"
-  deployment_identifier = "${var.deployment_identifier}"
+  source = "../../../../"
+  region = var.region
+  component = var.component
+  deployment_identifier = var.deployment_identifier
 
-  lambda_arn           = "${data.terraform_remote_state.prerequisites.outputs.lambda_arn}"
-  lambda_function_name = "${data.terraform_remote_state.prerequisites.outputs.lambda_function_name}"
+  lambda_arn = data.terraform_remote_state.prerequisites.outputs.lambda_arn
+  lambda_function_name = data.terraform_remote_state.prerequisites.outputs.lambda_function_name
 
   lambda_schedule_expression = "rate(10 minutes)"
-
 }
