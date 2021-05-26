@@ -1,6 +1,6 @@
 module "base_network" {
   source = "infrablocks/base-networking/aws"
-  version = "2.3.0"
+  version = "3.0.0"
 
   region = var.region
   vpc_cidr = var.vpc_cidr
@@ -14,7 +14,7 @@ module "base_network" {
 
 module "lambda" {
   source  = "infrablocks/lambda/aws"
-  version = "0.4.0"
+  version = "0.14.0"
 
   region = var.region
   component = var.component
@@ -30,5 +30,4 @@ module "lambda" {
   lambda_environment_variables = var.lambda_environment_variables
   lambda_function_name = var.lambda_function_name
   lambda_handler = var.lambda_handler
-
 }
