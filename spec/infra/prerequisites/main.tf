@@ -29,5 +29,6 @@ module "lambda" {
   lambda_egress_cidr_blocks = var.lambda_egress_cidr_blocks
   lambda_environment_variables = var.lambda_environment_variables
   lambda_function_name = var.lambda_function_name
+  lambda_description = var.lambda_description
   lambda_handler = var.lambda_handler
 }

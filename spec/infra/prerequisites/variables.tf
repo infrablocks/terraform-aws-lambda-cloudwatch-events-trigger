@@ -22,6 +22,7 @@ variable "lambda_environment_variables" {
   type = map(string)
 }
 variable "lambda_function_name" {}
+variable "lambda_description" {}
 variable "lambda_handler" {}
 
 
