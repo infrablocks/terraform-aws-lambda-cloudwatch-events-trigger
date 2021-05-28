@@ -1,5 +1,5 @@
-Terraform AWS Lambda CloudWatch events trigger
-===================================
+Terraform AWS Lambda CloudWatch Events Trigger
+==============================================
 
 [![CircleCI](https://circleci.com/gh/infrablocks/terraform-aws-lambda-cloudwatch-events-trigger.svg?style=svg)](https://circleci.com/gh/infrablocks/terraform-aws-lambda-cloudwatch-events-trigger)
 
@@ -43,6 +43,9 @@ module "lambda-cloudwatch-trigger" {
 }
 ```
 
+See the 
+[Terraform registry entry](https://registry.terraform.io/modules/infrablocks/lambda-cloudwatch-events-trigger/aws/latest) 
+for more details.
 
 ### Inputs
 
@@ -61,6 +64,10 @@ module "lambda-cloudwatch-trigger" {
 | Name                                    | Description                                               |
 |-----------------------------------------|-----------------------------------------------------------|
 
+### Compatibility
+
+This module is compatible with Terraform versions greater than or equal to 
+Terraform 0.14.
 
 Development
 -----------
