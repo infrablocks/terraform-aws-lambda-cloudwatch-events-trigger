@@ -14,7 +14,7 @@ module "base_network" {
 
 module "lambda" {
   source  = "infrablocks/lambda/aws"
-  version = "1.0.0"
+  version = "1.1.0"
 
   region = var.region
   component = var.component
