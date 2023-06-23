@@ -10,7 +10,6 @@ resource "aws_cloudwatch_event_target" "check_at_rate" {
 
 // TODO: rename this resource during next major upgrade
 resource "aws_lambda_permission" "allow_cloudwatch_to_call_check_foo" {
-  statement_id = "AllowExecutionFromCloudWatch"
   action = "lambda:InvokeFunction"
   function_name = var.lambda_function_name
   principal = "events.amazonaws.com"

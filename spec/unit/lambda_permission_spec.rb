@@ -20,14 +20,6 @@ describe 'lambda permission' do
               .once)
     end
 
-    it 'includes a statement ID' do
-      expect(@plan)
-        .to(include_resource_creation(type: 'aws_lambda_permission')
-              .with_attribute_value(
-                :statement_id, 'AllowExecutionFromCloudWatch'
-              ))
-    end
-
     it 'allows lambda function invocation' do
       expect(@plan)
         .to(include_resource_creation(type: 'aws_lambda_permission')
