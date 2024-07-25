@@ -12,4 +12,6 @@ module "lambda" {
 
   lambda_zip_path = var.lambda_zip_path
   lambda_handler = var.lambda_handler
+
+  lambda_runtime = "nodejs20.x"
 }
